@@ -19,8 +19,9 @@ question = st.text_input("Enter your question:")
 if st.button('Get AI Response'):
     try:
         ai_response = query_fastapi(question)
-        ai_response_content=ai_response['AIResponse']
-        ai_response_source=ai_response['Sources']
+        final_ai_response=ai_response.json()   #需要这个json处理步骤，后面才可以使用['AIResponse']、['Sources']
+        ai_response_content=final_ai_response['AIResponse']
+        ai_response_source=final_ai_response['Sources']
         #st.write("AI Response:", result.get("AI Response"))
         
         st.write("AI Response:", ai_response_content)
@@ -31,6 +32,11 @@ if st.button('Get AI Response'):
     except Exception as e:
         print(e)
 
+    return {
+        "AIResponse": output_text_wt_metadata_1,
+        "Sources": unique_sources_wt_metadata_1
+    }
+        return {"AIResponse": i_final_ai_response}
 
         #st.write("AI Response:", result.get("AI Response"))
         #st.write("Sources:", result.get("Sources"))
