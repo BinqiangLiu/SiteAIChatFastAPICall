@@ -18,10 +18,23 @@ def query_fastapi(question):
 question = st.text_input("Enter your question:")
 if st.button('Get AI Response'):
     try:
-        result = query_fastapi(question)
-        st.write("AI Response:", result.get("AI Response"))
-        st.write("Sources:", result.get("Sources"))
-        print("AI Response:", result.get("AI Response"))
-        print("Sources:", result.get("Sources"))
+        ai_response = query_fastapi(question)
+        ai_response_content=ai_response['AIResponse']
+        ai_response_source=ai_response['Sources']
+        #st.write("AI Response:", result.get("AI Response"))
+        
+        st.write("AI Response:", ai_response_content)
+        st.write("Sources:", ai_response_source)
+
+        print("AI Response:", ai_response_content)
+        print("Sources:", ai_response_source)
     except Exception as e:
         print(e)
+
+
+        #st.write("AI Response:", result.get("AI Response"))
+        #st.write("Sources:", result.get("Sources"))
+        #print("AI Response:", result.get("AI Response"))
+        #print("Sources:", result.get("Sources"))
+        # result.get("AI Response"))???
+        # result.get("Sources"))???       
