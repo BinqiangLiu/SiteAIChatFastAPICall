@@ -32,12 +32,6 @@ if st.button('Get AI Response'):
     except Exception as e:
         print(e)
 
-    return {
-        "AIResponse": output_text_wt_metadata_1,
-        "Sources": unique_sources_wt_metadata_1
-    }
-        return {"AIResponse": i_final_ai_response}
-
         #st.write("AI Response:", result.get("AI Response"))
         #st.write("Sources:", result.get("Sources"))
         #print("AI Response:", result.get("AI Response"))
