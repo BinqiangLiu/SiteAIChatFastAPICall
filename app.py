@@ -22,10 +22,16 @@ current_datetime_0= datetime.datetime.now()
 print(f"Anything happens, this ST app will execute from top down. @ {current_datetime_0}")
 print()
 
+HUGGINGFACEHUB_API_TOKEN = os.getenv('HUGGINGFACEHUB_API_TOKEN')
 
 def query_fastapi(question):
     url = "https://binqiangliu-siteaichatfastapi.hf.space/query/"
-    headers = {"Content-Type": "application/json"}
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {HUGGINGFACEHUB_API_TOKEN}"
+        #保险起见，建议始终采用f''的形式以及配合使用{}
+    }
+#    headers = {"Content-Type": "application/json"}
     data = {"query": question}
 
     response = requests.post(url, headers=headers, data=json.dumps(data))
